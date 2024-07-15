@@ -7,15 +7,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E5C38298-494
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "users", "users", "{5AB00332-CAB0-4E5E-AF6B-DDEA7BC8168A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMarket.User.API", "src\users\AutoMarket.User.API\AutoMarket.User.API.csproj", "{B71D1C5C-D19D-4583-8E7A-8E215DE9F5C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMarket.Users.API", "src\users\AutoMarket.Users.API\AutoMarket.Users.API.csproj", "{B71D1C5C-D19D-4583-8E7A-8E215DE9F5C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMarket.User.Application", "src\users\AutoMarket.User.Application\AutoMarket.User.Application.csproj", "{AA26C399-3794-4998-A70E-0AB44C8534C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMarket.Users.Application", "src\users\AutoMarket.Users.Application\AutoMarket.Users.Application.csproj", "{AA26C399-3794-4998-A70E-0AB44C8534C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMarket.User.Domain", "src\users\AutoMarket.User.Domain\AutoMarket.User.Domain.csproj", "{D830CC2B-EF70-4B28-8847-44362E3813B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMarket.Users.Domain", "src\users\AutoMarket.Users.Domain\AutoMarket.Users.Domain.csproj", "{D830CC2B-EF70-4B28-8847-44362E3813B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMarket.User.Infrastructure", "src\users\AutoMarket.User.Infrastructure\AutoMarket.User.Infrastructure.csproj", "{F4731A99-06D1-4387-83CE-4636DA2AC3F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMarket.Users.Infrastructure", "src\users\AutoMarket.Users.Infrastructure\AutoMarket.Users.Infrastructure.csproj", "{F4731A99-06D1-4387-83CE-4636DA2AC3F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMarket.User.Shared", "src\users\AutoMarket.User.Shared\AutoMarket.User.Shared.csproj", "{A28B235E-0C14-40FE-9B64-5FA6F116D58F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMarket.Users.Shared", "src\users\AutoMarket.Users.Shared\AutoMarket.Users.Shared.csproj", "{A28B235E-0C14-40FE-9B64-5FA6F116D58F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{D4D4E77F-4F5C-42D6-86EF-A7A33515FF5B}"
 EndProject

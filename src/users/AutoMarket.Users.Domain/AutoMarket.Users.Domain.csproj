@@ -7,8 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
+    <PackageReference Include="ErrorOr" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\tools\AutoMarket.Infrastructure\AutoMarket.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
