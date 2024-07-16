@@ -1,6 +1,6 @@
 namespace AutoMarket.Users.Domain.ValueObjects;
 
-public class Address
+public record Address
 {
     private Address(string street, string number, string city, string country)
     {
