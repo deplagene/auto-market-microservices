@@ -5,7 +5,12 @@ using AutoMarket.Cars.Infrastructure;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+builder.Services.AddSwaggerGen(c =>
+{
+    c.CustomSchemaIds(type => type.FullName);
+});
+
 builder.Services.AddControllers();
 builder.Services.AddInfrastructure(builder.Configuration)
     .AddApplication();

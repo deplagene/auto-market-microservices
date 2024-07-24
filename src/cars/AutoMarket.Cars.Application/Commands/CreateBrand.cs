@@ -22,7 +22,7 @@ public class CreateBrand
     }
 
     public sealed class Handler(
-        IBrandRepository repository,
+        IWriteBrandRepository repository,
         IUnitOfWork unitOfWork) : IRequestHandler<Request, ErrorOr<Brand>>
     {
         public async Task<ErrorOr<Brand>> Handle(Request request, CancellationToken cancellationToken)

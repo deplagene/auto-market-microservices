@@ -14,8 +14,11 @@ public static class DependencyInjection
     {
         services.AddDbContext<ApplicationDbContext>(options =>
         {
-            options.UseNpgsql(configuration.GetConnectionString(ConnectionStringsNames.Postgres), b =>
-                b.MigrationsAssembly("AutoMarket.Cars.Infrastructure"));
+            // options.UseNpgsql(configuration.GetConnectionString(ConnectionStringsNames.Postgres), b =>
+            //     b.MigrationsAssembly("AutoMarket.Cars.Infrastructure"));
+
+            options.UseSqlite("Data Source=auto_market_cars.db");
+
         });
         services.AddScoped<ICarRepository, CarRepository>();
         services.AddScoped<IReadCarRepository>(provider => provider.GetRequiredService<ICarRepository>());
@@ -32,4 +35,6 @@ public static class DependencyInjection
 public static class ConnectionStringsNames
 {
     public readonly static string Postgres = "Postgres";
+
+    //public readonly static string Redis = "Redis";
 }

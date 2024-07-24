@@ -15,7 +15,7 @@ public class CreateCar
         decimal Price,
         Guid BrandId,
         CarType CarType,
-        string? Description,
+        string Description,
         int YearOfIssue,
         Guid OwnerId) : IRequest<ErrorOr<Car>>;
 
@@ -36,7 +36,7 @@ public class CreateCar
     }
 
     public sealed class Handler(
-        ICarRepository repository,
+        IWriteCarRepository repository,
         IUnitOfWork unitOfWork) : IRequestHandler<Request, ErrorOr<Car>>
     {
         public async Task<ErrorOr<Car>> Handle(Request request, CancellationToken cancellationToken)
