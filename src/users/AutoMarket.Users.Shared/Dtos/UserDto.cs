@@ -6,4 +6,5 @@ public sealed record UserDto
     public string Email { get; init; } = null!;
     public string FirstName { get; init; } = null!;
     public string LastName { get; init; } = null!;
+    public IReadOnlyCollection<string> Roles { get; set; } = null!;
 }

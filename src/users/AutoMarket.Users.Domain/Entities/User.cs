@@ -7,14 +7,16 @@ namespace AutoMarket.Users.Domain.Entities;
 
 public class User : Entity<Guid>
 {
+    private readonly HashSet<Role> _roles;
     private User() { }
 
-    private User(FullName fullName, Email email, Password password, Address address)
+    private User(FullName fullName, Email email, Password password, Address address, IReadOnlyCollection<Role> roles)
     {
         FullName = fullName;
         Email = email;
         Password = password;
         Address = address;
+        _roles = new HashSet<Role>(roles);
     }
 
     public FullName FullName { get; private set; } = null!;
@@ -25,6 +27,8 @@ public class User : Entity<Guid>
 
     public Address Address { get; private set; } = null!;
 
+    public IReadOnlyCollection<Role> Roles => _roles;
+
     public static ErrorOr<User> Create(
         string firstName,
         string lastName,
@@ -33,7 +37,8 @@ public class User : Entity<Guid>
         string street,
         string number,
         string city,
-        string country)
+        string country,
+        IReadOnlyCollection<Role> roles)
     {
        if(string.IsNullOrWhiteSpace(firstName))
            return Error.Validation(
@@ -79,7 +84,8 @@ public class User : Entity<Guid>
             FullName.Create(firstName, lastName),
             Email.Create(email),
             Password.Create(password),
-            Address.Create(street, number, city, country));
+            Address.Create(street, number, city, country),
+            roles);
     }
 
     public void SetFullName(string firstName, string lastName)
@@ -125,5 +131,16 @@ public class User : Entity<Guid>
             throw new ArgumentNullException(nameof(country));
 
         Address = Address.Create(street, number, city, country);
+    }
+
+    public void SetRole(IReadOnlyCollection<Role> roles)
+    {
+        if(roles is null)
+            throw new ArgumentNullException(nameof(roles));
+
+        _roles.Clear();
+
+        foreach (var role in roles)
+            _roles.Add(role);
     }
 }

@@ -21,6 +21,8 @@ public static class DependencyInjection
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IReadUserRepository>(provider => provider.GetRequiredService<IUserRepository>());
         services.AddScoped<IWriteUserRepository>(provider => provider.GetRequiredService<IUserRepository>());
+        services.AddScoped<IRolesRepository, RolesRepository>();
+        services.AddScoped<IReadRolesRepository>(provider => provider.GetRequiredService<IRolesRepository>());
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IPasswordHasher, PasswordHasher>();
         services.AddHostedService<MigrationBackgroundService>();

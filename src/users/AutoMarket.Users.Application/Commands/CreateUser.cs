@@ -1,4 +1,5 @@
 using AutoMarket.Infrastructure;
+using AutoMarket.Infrastructure.Constants;
 using AutoMarket.Infrastructure.Identity;
 using AutoMarket.Users.Domain.Entities;
 using AutoMarket.Users.Domain.Repositories;
@@ -41,11 +42,15 @@ public class CreateUser
     public sealed class Handler(
         IWriteUserRepository repository,
         IPasswordHasher passwordHasher,
-        IUnitOfWork unitOfWork) : IRequestHandler<Request, ErrorOr<User>>
+        IUnitOfWork unitOfWork,
+        IReadRolesRepository rolesRepository) : IRequestHandler<Request, ErrorOr<User>>
     {
         public async Task<ErrorOr<User>> Handle(Request request, CancellationToken cancellationToken)
         {
             var passwordHash = passwordHasher.Hash(request.Password);
+
+            var role = await rolesRepository
+                .GetByIdAsync(ApplicationUser.DefaultUser, cancellationToken);
 
             var user = User.Create(
                 request.FirstName,
@@ -55,7 +60,8 @@ public class CreateUser
                 request.Street,
                 request.Number,
                 request.City,
-                request.Country
+                request.Country,
+                [role]
             );
 
             if(user.IsError)

@@ -1,3 +1,4 @@
+using AutoMarket.Infrastructure.Constants;
 using AutoMarket.Users.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,7 @@ public class ApplicationDbContext : DbContext
         : base(options) { }
 
     public DbSet<User> Users { get; set; }
+    public DbSet<Role> Roles {get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -20,6 +22,21 @@ public class ApplicationDbContext : DbContext
             user.ComplexProperty(u => u.Email);
             user.ComplexProperty(u => u.Password);
             user.ComplexProperty(u => u.Address);
+        });
+
+        modelBuilder.Entity<Role>(role =>
+        {
+            role.HasKey(x => x.Name);
+
+            role
+                .HasIndex(x => x.Name)
+                .IsUnique();
+
+            role.HasData
+            (
+                Role.Create(ApplicationUser.DefaultUser),
+                Role.Create(ApplicationUser.ExternalUser)
+            );
         });
         base.OnModelCreating(modelBuilder);
     }

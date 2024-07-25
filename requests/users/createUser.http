@@ -1,0 +1,14 @@
+POST {{host}}/api/User
+
+Content-Type: application/json
+
+{
+    "email": "2fHbH@example.com",
+    "password": "password",
+    "firstName": "John",
+    "lastName": "Doe",
+    "street": "Main Street",
+    "number": "1",
+    "city": "New York",
+    "country": "USA"
+}
