@@ -1,5 +1,4 @@
 using AutoMarket.Infrastructure.Entities;
-using AutoMarket.Infrastructure.Identity;
 using AutoMarket.Users.Domain.ValueObjects;
 using ErrorOr;
 
