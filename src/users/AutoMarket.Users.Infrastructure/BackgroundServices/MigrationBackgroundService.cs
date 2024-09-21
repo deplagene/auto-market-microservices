@@ -9,7 +9,7 @@ public sealed class MigrationBackgroundService(IServiceProvider serviceProvider)
     {
         using var scope = serviceProvider.CreateScope();
 
-        var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        var context = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
 
         await context.Database.MigrateAsync(stoppingToken);
     }

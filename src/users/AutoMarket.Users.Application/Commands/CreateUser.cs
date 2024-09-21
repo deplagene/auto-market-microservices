@@ -26,15 +26,15 @@ public class CreateUser
         {
             RuleFor(x => x.Email)
                 .EmailAddress()
-                .WithMessage("Invalid email");
+                .WithMessage("Некорректный адрес электронной почты");
 
             RuleFor(x => x.Email)
                 .MustAsync(repository.IsUniqueByEmailAsync)
-                .WithMessage("Email already exists");
+                .WithMessage(x => $"Пользователь с электронной почтой {x.Email} уже существует");
 
             RuleFor(x => x.Password)
-                .MinimumLength(8)
-                .WithMessage("Password must be at least 8 characters long");
+                .MinimumLength(10)
+                .WithMessage("Пароль должен содержать не менее 10 символов");
         }
     }
 

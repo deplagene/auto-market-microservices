@@ -13,11 +13,14 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<ApplicationDbContext>(options =>
-        {
-            options.UseNpgsql(configuration.GetConnectionString(GetConnectionStringsNames.Postgres), b =>
-                b.MigrationsAssembly("AutoMarket.Users.Infrastructure"));
-        });
+        // services.AddDbContext<ApplicationDbContext>(options =>
+        // {
+        //     options.UseNpgsql(configuration.GetConnectionString(GetConnectionStringsNames.Postgres), b =>
+        //         b.MigrationsAssembly("AutoMarket.Users.Infrastructure"));
+        // });
+        services.AddDbContext<DatabaseContext>(options => 
+            options.UseSqlite("Data Source=users.db"));
+;
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IReadUserRepository>(provider => provider.GetRequiredService<IUserRepository>());
         services.AddScoped<IWriteUserRepository>(provider => provider.GetRequiredService<IUserRepository>());
@@ -28,7 +31,7 @@ public static class DependencyInjection
     }
 }
 
-public static class GetConnectionStringsNames
-{
-    public static readonly string Postgres = "Postgres";
-}
+// public static class GetConnectionStringsNames
+// {
+//     public static readonly string Postgres = "Postgres";
+// }
